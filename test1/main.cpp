@@ -1,12 +1,29 @@
- #include <iostream>
- using namespace std;
-//華氏攝氏轉換
+#include <iostream>
+using namespace std;
+
 int main() {
-    double fahrenheit;
-    double celsius;
-    cout <<"請輸入華氏溫度:\n";
-    cin >> fahrenheit;
-    celsius =(fahrenheit-32)/9*5;
-    cout<< "攝氏溫度是:"<<celsius;
+    // 第一部分：星星三角形
+    for (int i = 1; i <= 6; ++i) {
+        for (int j = 1; j <= i; ++j) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    cout << endl << "九九乘法表：" << endl << endl;
+
+    // 第二部分：九九乘法表
+    int i = 1;
+    int j;
+    while (i <= 9) {
+        j = 1;
+        while (j <= 9) {
+            cout << i << " * " << j << " = " << i * j << "\t";
+            j += 1;
+        }
+        cout << endl;
+        i += 1;
+    }
+
     return 0;
 }
