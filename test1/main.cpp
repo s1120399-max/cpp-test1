@@ -1,35 +1,25 @@
 #include <iostream>
-#include <string>
-using namespace std;
 
-int main() {
-    // 分數數組
-    int score[10] = {85, 90, 60, 92, 100, 76, 50, 89, 84, 40};
-    // 每個等級的學生數量
-    int gradeCount[5] = {0};
+double calculateBMI(double weight_kg, double height_cm){
+    if (height_cm <= 0) return 0.0;
 
-    // 遍歷所有分數
-    for (int i = 0; i < 10; ++i) {
-        // 判斷分數所屬的等級
-        if (score[i] >= 90) {
-            gradeCount[0]++; // A等級
-        } else if (score[i] >= 80) {
-            gradeCount[1]++; // B等級
-        } else if (score[i] >= 70) {
-            gradeCount[2]++; // C等級
-        } else if (score[i] >= 60) {
-            gradeCount[3]++; // D等級
-        } else {
-            gradeCount[4]++; // F等級
-        }
-    }
+    double height_m = height_cm / 100.0;
+    // BMI calculation
+    double bmi = weight_kg / (height_m * height_m);
+    return bmi;
+}
 
-    // 輸出結果
-    cout << "A等人數: " << gradeCount[0] << endl;
-    cout << "B等人數: " << gradeCount[1] << endl;
-    cout << "C等人數: " << gradeCount[2] << endl;
-    cout << "D等人數: " << gradeCount[3] << endl;
-    cout << "F等人數: " << gradeCount[4] << endl;
+int main()
+{
+    double weight1, weight2, height1, height2;
+
+    weight1 = 80;
+    weight2 = 70;
+    height1 = 168;
+    height2 = 188;
+
+    std::cout << "your bmi is " << calculateBMI(weight1, height1) << std::endl;
+    std::cout << "another bmi is " << calculateBMI(weight2, height2) << std::endl;
 
     return 0;
 }
