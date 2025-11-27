@@ -1,25 +1,46 @@
 #include <iostream>
+#include <cstdlib>   // rand(), srand()
+#include <ctime>     // time()
 
-double calculateBMI(double weight_kg, double height_cm){
-    if (height_cm <= 0) return 0.0;
+using namespace std;
 
-    double height_m = height_cm / 100.0;
-    // BMI calculation
-    double bmi = weight_kg / (height_m * height_m);
-    return bmi;
-}
+int main() {
+    const int N = 10;     // 陣列大小
+    int arr[N];
 
-int main()
-{
-    double weight1, weight2, height1, height2;
+    // ---- 亂數種子 ----
+    srand(time(NULL));
 
-    weight1 = 80;
-    weight2 = 70;
-    height1 = 168;
-    height2 = 188;
+    // ---- 產生 (0~99) 之間的亂數 ----
+    cout << "原始亂數陣列: ";
+    for (int i = 0; i < N; i++) {
+        arr[i] = rand() % 100;
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
-    std::cout << "your bmi is " << calculateBMI(weight1, height1) << std::endl;
-    std::cout << "another bmi is " << calculateBMI(weight2, height2) << std::endl;
+    // ---- 選擇排序 (Selection Sort) ----
+    for (int i = 0; i < N - 1; i++) {
+        int minIndex = i;
+
+        for (int j = i + 1; j < N; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // 交換
+        int temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+
+    // ---- 排序後輸出 ----
+    cout << "排序後陣列: ";
+    for (int i = 0; i < N; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
